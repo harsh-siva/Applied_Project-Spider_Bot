@@ -1,9 +1,14 @@
 <?xml version="1.0" ?>
 <robot name="spyderr" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:include filename="$(find spyderr_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find spyderr_description)/urdf/spyderr.ros2control" />
-<xacro:include filename="$(find spyderr_description)/urdf/spyderr.gazebo" />
+<!-- ROS 2–safe package share root -->
+<xacro:property name="pkg_share" value="$(find spyderr_description)"/>
+<xacro:property name="mesh_dir"  value="${pkg_share}/meshes"/>
+
+<xacro:include filename="${pkg_share}/urdf/materials.xacro" />
+<xacro:include filename="${pkg_share}/urdf/spyderr.ros2control" />
+<xacro:include filename="${pkg_share}/urdf/spyderr.gazebo" />
+
 <link name="base_link">
   <inertial>
     <origin xyz="-0.011634383299055345 -0.020012327327441907 0.04021488449284461" rpy="0 0 0"/>
@@ -13,14 +18,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -34,14 +39,14 @@
   <visual>
     <origin xyz="0.0749 -0.0542 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0749 -0.0542 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -55,14 +60,14 @@
   <visual>
     <origin xyz="0.113987 -0.023232 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.113987 -0.023232 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -76,14 +81,14 @@
   <visual>
     <origin xyz="0.23362 -0.186207 0.144115" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.23362 -0.186207 0.144115" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -97,14 +102,14 @@
   <visual>
     <origin xyz="-0.0549 -0.0542 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0549 -0.0542 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -118,14 +123,14 @@
   <visual>
     <origin xyz="-0.193264 0.021095 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.193264 0.021095 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -139,14 +144,14 @@
   <visual>
     <origin xyz="-0.218025 -0.244252 -0.156756" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.218025 -0.244252 -0.156756" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -160,14 +165,14 @@
   <visual>
     <origin xyz="0.0749 0.0942 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0749 0.0942 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -181,14 +186,14 @@
   <visual>
     <origin xyz="-0.084253 -0.049848 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.084253 -0.049848 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -202,14 +207,14 @@
   <visual>
     <origin xyz="-0.017251 0.028976 0.099956" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.017251 0.028976 0.099956" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -223,14 +228,14 @@
   <visual>
     <origin xyz="-0.0549 0.0942 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.0549 0.0942 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/coxa_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/coxa_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -244,14 +249,14 @@
   <visual>
     <origin xyz="0.203531 0.10503 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.203531 0.10503 -0.0627" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/femur_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/femur_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -265,14 +270,14 @@
   <visual>
     <origin xyz="-0.021579 0.033246 -0.201375" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.021579 0.033246 -0.201375" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/tibia_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/tibia_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -286,14 +291,14 @@
   <visual>
     <origin xyz="-0.064 0.02 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/camera_stand_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/camera_stand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.064 0.02 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/camera_stand_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/camera_stand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -307,14 +312,14 @@
   <visual>
     <origin xyz="-0.061225 0.026 -0.1647" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/camera_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.061225 0.026 -0.1647" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/camera_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -328,14 +333,14 @@
   <visual>
     <origin xyz="0.069407 0.019459 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/lidar_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.069407 0.019459 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/lidar_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -349,14 +354,14 @@
   <visual>
     <origin xyz="-0.01 0.02 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/imu_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.01 0.02 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find spyderr_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/imu_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
