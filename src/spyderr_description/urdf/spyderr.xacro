@@ -37,9 +37,9 @@
     <inertia ixx="0.00026" iyy="0.000276" izz="0.000188" ixy="2.9e-05" iyz="-1e-05" ixz="-2e-06"/>
   </inertial>
   <visual>
-    <origin xyz="0.0749 -0.0542 -0.0528" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/coxa_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/coxa_FR_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -58,9 +58,9 @@
     <inertia ixx="0.000169" iyy="0.000169" izz="0.000293" ixy="-3.2e-05" iyz="1.9e-05" ixz="-1.9e-05"/>
   </inertial>
   <visual>
-    <origin xyz="0.113987 -0.023232 -0.0627" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/femur_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/femur_FR_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -79,9 +79,9 @@
     <inertia ixx="0.001697" iyy="0.001665" izz="0.000146" ixy="-1.3e-05" iyz="6.5e-05" ixz="-7.6e-05"/>
   </inertial>
   <visual>
-    <origin xyz="0.23362 -0.186207 0.144115" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/tibia_FR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/tibia_FR_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -100,9 +100,9 @@
     <inertia ixx="0.000276" iyy="0.00026" izz="0.000188" ixy="-2.9e-05" iyz="2e-06" ixz="-1e-05"/>
   </inertial>
   <visual>
-    <origin xyz="-0.0549 -0.0542 -0.0528" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/coxa_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/coxa_BR_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -121,9 +121,9 @@
     <inertia ixx="0.000169" iyy="0.000169" izz="0.000293" ixy="3.2e-05" iyz="1.9e-05" ixz="1.9e-05"/>
   </inertial>
   <visual>
-    <origin xyz="-0.193264 0.021095 -0.0627" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/femur_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/femur_BR_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -142,9 +142,9 @@
     <inertia ixx="0.001665" iyy="0.001697" izz="0.000146" ixy="1.3e-05" iyz="7.6e-05" ixz="6.5e-05"/>
   </inertial>
   <visual>
-    <origin xyz="-0.218025 -0.244252 -0.156756" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/tibia_BR_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/tibia_BR_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -163,9 +163,9 @@
     <inertia ixx="0.000276" iyy="0.00026" izz="0.000188" ixy="-2.9e-05" iyz="-2e-06" ixz="1e-05"/>
   </inertial>
   <visual>
-    <origin xyz="0.0749 0.0942 -0.0528" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/coxa_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/coxa_FL_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -184,9 +184,9 @@
     <inertia ixx="0.000169" iyy="0.000169" izz="0.000293" ixy="3.2e-05" iyz="-1.9e-05" ixz="-1.9e-05"/>
   </inertial>
   <visual>
-    <origin xyz="-0.084253 -0.049848 -0.0627" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/femur_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/femur_FL_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -205,9 +205,9 @@
     <inertia ixx="0.001665" iyy="0.001697" izz="0.000146" ixy="1.3e-05" iyz="-7.6e-05" ixz="-6.5e-05"/>
   </inertial>
   <visual>
-    <origin xyz="-0.017251 0.028976 0.099956" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/tibia_FL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/tibia_FL_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -226,9 +226,9 @@
     <inertia ixx="0.00026" iyy="0.000276" izz="0.000188" ixy="2.9e-05" iyz="1e-05" ixz="2e-06"/>
   </inertial>
   <visual>
-    <origin xyz="-0.0549 0.0942 -0.0528" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/coxa_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/coxa_BL_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -247,9 +247,9 @@
     <inertia ixx="0.000169" iyy="0.000169" izz="0.000293" ixy="-3.2e-05" iyz="-1.9e-05" ixz="1.9e-05"/>
   </inertial>
   <visual>
-    <origin xyz="0.203531 0.10503 -0.0627" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/femur_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/femur_BL_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -268,9 +268,9 @@
     <inertia ixx="0.001697" iyy="0.001665" izz="0.000146" ixy="-1.3e-05" iyz="-6.5e-05" ixz="7.6e-05"/>
   </inertial>
   <visual>
-    <origin xyz="-0.021579 0.033246 -0.201375" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/tibia_BL_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/tibia_BL_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -289,9 +289,9 @@
     <inertia ixx="0.000356" iyy="0.000274" izz="0.000106" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.064 0.02 -0.0877" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/camera_stand_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/camera_stand_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -310,9 +310,9 @@
     <inertia ixx="4.5e-05" iyy="8e-06" izz="4.5e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.061225 0.026 -0.1647" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/camera_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/camera_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -331,9 +331,9 @@
     <inertia ixx="0.000253" iyy="0.000253" izz="0.000465" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.069407 0.019459 -0.0877" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/lidar_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/lidar_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
@@ -352,9 +352,9 @@
     <inertia ixx="6e-06" iyy="4e-06" izz="1e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.01 0.02 -0.0877" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://${mesh_dir}/imu_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://${mesh_dir}/link_local/imu_1__visual0.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>

@@ -19,3 +19,7 @@ Thumbs.db
 
 # misc
 /tmp/
+
+# Local artifacts / backups
+*.stl.bak
+* (copy).xacro
