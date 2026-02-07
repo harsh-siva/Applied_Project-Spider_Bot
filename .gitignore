@@ -25,3 +25,8 @@ log/
 
 # Generated temp meshes
 src/prjct_spider_bot_description/meshes/obj_tmp/
+
+# Backup files
+*.bak
+*.bak_*
+*~ 
