@@ -112,6 +112,30 @@
     </geometry>
   </collision>
 </link>
+<!-- === Locked sensor mount frames (aliases) === -->
+<link name="lidar_link"/>
+<link name="camera_link"/>
+<link name="camera_optical_frame"/>
+
+<joint name="J_lidar_alias" type="fixed">
+  <parent link="lidar_1"/>
+  <child link="lidar_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+<joint name="J_camera_alias" type="fixed">
+  <parent link="camera_1"/>
+  <child link="camera_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+<!-- REP-103 optical frame: X right, Y down, Z forward -->
+<joint name="J_camera_optical" type="fixed">
+  <parent link="camera_link"/>
+  <child link="camera_optical_frame"/>
+  <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+</joint>
+
 
 <link name="coxa_FR_1">
   <inertial>
