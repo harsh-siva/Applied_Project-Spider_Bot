@@ -1,8 +1,12 @@
 <?xml version="1.0" ?>
 <robot name="prjct_spider_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:arg name="use_ros2_control" default="false"/>
+
 <xacro:include filename="$(find prjct_spider_bot_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find prjct_spider_bot_description)/urdf/prjct_spider_bot.ros2control.xml" />
+<xacro:if value="$(arg use_ros2_control)">
+  <xacro:include filename="$(find prjct_spider_bot_description)/urdf/prjct_spider_bot.ros2control.xml" />
+</xacro:if>
 <xacro:include filename="$(find prjct_spider_bot_description)/urdf/prjct_spider_bot.gazebo" />
 <link name="base_link">
   <inertial>
