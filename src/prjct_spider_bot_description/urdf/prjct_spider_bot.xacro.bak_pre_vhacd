@@ -8,17 +8,6 @@
   <xacro:include filename="$(find prjct_spider_bot_description)/urdf/prjct_spider_bot.ros2control.xml" />
 </xacro:if>
 <xacro:include filename="$(find prjct_spider_bot_description)/urdf/prjct_spider_bot.gazebo" />
-
-<!-- Dummy root to satisfy KDL (KDL dislikes inertial on root link) -->
-<link name="world"/>
-
-<joint name="world_to_base" type="fixed">
-  <parent link="world"/>
-  <child link="base_link"/>
-  <origin xyz="0 0 0" rpy="0 0 0"/>
-</joint>
-
-
 <link name="base_link">
   <inertial>
     <origin xyz="-0.011634383299055345 -0.020012327327441907 0.04021488449284461" rpy="0 0 0"/>
@@ -35,7 +24,7 @@
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/base_link_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -56,7 +45,7 @@
   <collision>
     <origin xyz="0.069407 0.019459 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/lidar_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -77,7 +66,7 @@
   <collision>
     <origin xyz="-0.01 0.02 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/imu_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -98,7 +87,7 @@
   <collision>
     <origin xyz="-0.064 0.02 -0.0877" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/camera_stand_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/camera_stand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -119,7 +108,7 @@
   <collision>
     <origin xyz="-0.061225 0.02 -0.1647" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/camera_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -164,7 +153,7 @@
   <collision>
     <origin xyz="0.0749 -0.0542 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/coxa_FR_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/coxa_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -185,7 +174,7 @@
   <collision>
     <origin xyz="0.130196 -0.070181 -0.0387" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/femur_FR_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/femur_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -206,7 +195,7 @@
   <collision>
     <origin xyz="0.179439 -0.119425 -0.02004" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/tibia_FR_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/tibia_FR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -227,7 +216,7 @@
   <collision>
     <origin xyz="-0.0549 -0.0542 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/coxa_BR_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/coxa_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -248,7 +237,7 @@
   <collision>
     <origin xyz="-0.070881 -0.109496 -0.0387" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/femur_BR_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/femur_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -269,7 +258,7 @@
   <collision>
     <origin xyz="-0.120124 -0.15874 -0.02004" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/tibia_BR_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/tibia_BR_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -290,7 +279,7 @@
   <collision>
     <origin xyz="0.0749 0.0942 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/coxa_FL_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/coxa_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -311,7 +300,7 @@
   <collision>
     <origin xyz="0.090881 0.149496 -0.0387" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/femur_FL_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/femur_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -332,7 +321,7 @@
   <collision>
     <origin xyz="0.140124 0.19874 -0.02004" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/tibia_FL_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/tibia_FL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -353,7 +342,7 @@
   <collision>
     <origin xyz="-0.0549 0.0942 -0.0528" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/coxa_BL_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/coxa_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -374,7 +363,7 @@
   <collision>
     <origin xyz="-0.111378 0.105301 -0.0387" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/femur_BL_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/femur_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -395,7 +384,7 @@
   <collision>
     <origin xyz="-0.164726 0.150065 -0.02004" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/collision/tibia_BL_1_vhacd.obj" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find prjct_spider_bot_description)/meshes/tibia_BL_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>

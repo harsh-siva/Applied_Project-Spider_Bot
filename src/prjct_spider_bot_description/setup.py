@@ -14,7 +14,9 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
         (os.path.join('share', package_name, 'urdf'), glob('urdf/*')),
-        (os.path.join('share', package_name, 'meshes'), glob('meshes/*')),
+        (os.path.join('share', package_name, 'meshes'), glob('meshes/*.stl')),
+        (os.path.join('share', package_name, 'meshes', 'collision'), glob('meshes/collision/*.obj')),
+        (os.path.join('share', package_name, 'meshes', 'collision'), glob('meshes/collision/*_log.txt')),
         (os.path.join('share', package_name, 'config'), glob('config/*'))
     ],
     install_requires=['setuptools'],

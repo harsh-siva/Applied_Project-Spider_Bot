@@ -11,3 +11,17 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+# Python / venv
+.venv*/
+**/.venv*/
+__pycache__/
+*.pyc
+
+# ROS / colcon
+build/
+install/
+log/
+
+# Generated temp meshes
+src/prjct_spider_bot_description/meshes/obj_tmp/
