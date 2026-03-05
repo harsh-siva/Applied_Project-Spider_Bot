@@ -34,3 +34,6 @@ src/prjct_spider_bot_description/meshes/obj_tmp/
 # local collision tooling
 src/prjct_spider_bot_description/.venv_collision/
 src/prjct_spider_bot_description/meshes/obj_tmp/
+
+# Local scratch (never commit)
+local/
