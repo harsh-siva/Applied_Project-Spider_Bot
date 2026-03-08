@@ -6,9 +6,12 @@ from isaaclab.actuators import ImplicitActuatorCfg
 from isaaclab.assets import ArticulationCfg, AssetBaseCfg
 from isaaclab.envs import ManagerBasedRLEnvCfg
 from isaaclab.managers import ObservationGroupCfg as ObsGroup
+from isaaclab.managers import ObservationTermCfg as ObsTerm
 from isaaclab.managers import TerminationTermCfg as DoneTerm
 from isaaclab.scene import InteractiveSceneCfg
 from isaaclab.utils import configclass
+from isaaclab.envs.mdp.actions import JointPositionActionCfg
+from isaaclab.envs.mdp.commands import UniformVelocityCommandCfg
 
 from . import mdp
 
@@ -16,6 +19,22 @@ from . import mdp
 SPIDERBOT_USD_PATH = (
     "/home/harsh/work/Applied_Project-Spider_Bot/src/prjct_spider_bot_description/Isaac_GUI/spiderbot_rl_nophysics.usd"
 )
+
+# Lock 12 leg joints (exclude J_Lidar)
+SPIDERBOT_LEG_JOINTS = [
+    "J_Coxa_BL",
+    "J_Coxa_BR",
+    "J_Coxa_FL",
+    "J_Coxa_FR",
+    "J_Femur_BL",
+    "J_Femur_BR",
+    "J_Femur_FL",
+    "J_Femur_FR",
+    "J_Tibia_BL",
+    "J_Tibia_BR",
+    "J_Tibia_FL",
+    "J_Tibia_FR",
+]
 
 
 @configclass
@@ -35,8 +54,6 @@ class SpiderbotSceneCfg(InteractiveSceneCfg):
     )
 
     # Spawn the spiderbot USD as an articulation
-    # NOTE: IsaacLab requires actuators to be specified. For now we attach a minimal implicit actuator
-    # to *all* joints. Next phase we'll restrict to the 12 leg joints and exclude any sensor joints.
     robot: ArticulationCfg = ArticulationCfg(
         prim_path="{ENV_REGEX_NS}/Robot",
         spawn=sim_utils.UsdFileCfg(
@@ -44,8 +61,8 @@ class SpiderbotSceneCfg(InteractiveSceneCfg):
             activate_contact_sensors=False,
         ),
         actuators={
-            "all_joints": ImplicitActuatorCfg(
-                joint_names_expr=[".*"],
+            "legs": ImplicitActuatorCfg(
+                joint_names_expr=SPIDERBOT_LEG_JOINTS,
                 stiffness=0.0,
                 damping=0.0,
             )
@@ -55,19 +72,40 @@ class SpiderbotSceneCfg(InteractiveSceneCfg):
 
 @configclass
 class ActionsCfg:
-    """Placeholder. We'll add 12-leg joint actions next."""
-    pass
+    """Action terms for the environment."""
+    legs_joint_pos = JointPositionActionCfg(
+        asset_name="robot",
+        joint_names=SPIDERBOT_LEG_JOINTS,
+        scale=0.25,
+        use_default_offset=True,
+    )
+
+
+@configclass
+class CommandsCfg:
+    base_velocity = UniformVelocityCommandCfg(
+        asset_name="robot",
+        resampling_time_range=(1000.0, 1000.0),  # effectively fixed during smoke
+        ranges=UniformVelocityCommandCfg.Ranges(
+            lin_vel_x=(-0.5, 0.5),
+            lin_vel_y=(-0.3, 0.3),
+            ang_vel_z=(-1.0, 1.0),
+        ),
+    )
 
 
 @configclass
 class ObservationsCfg:
-    """Placeholder. We'll add joint/base/command observations next."""
+    """Minimal observations. We'll add joint/base state next."""
 
     @configclass
     class PolicyCfg(ObsGroup):
+        # IMPORTANT: observation terms must be ObservationTermCfg, not raw functions
+        commanded_vel = ObsTerm(func=mdp.generated_commands, params={"command_name": "base_velocity"})
+
         def __post_init__(self) -> None:
             self.enable_corruption = False
-            self.concatenate_terms = False
+            self.concatenate_terms = True
 
     policy: PolicyCfg = PolicyCfg()
 
@@ -89,6 +127,7 @@ class ProjectSpiderbotEnvCfg(ManagerBasedRLEnvCfg):
     """Top-level env cfg."""
     scene: SpiderbotSceneCfg = SpiderbotSceneCfg()
     actions: ActionsCfg = ActionsCfg()
+    commands: CommandsCfg = CommandsCfg()
     observations: ObservationsCfg = ObservationsCfg()
     rewards: RewardsCfg = RewardsCfg()
     terminations: TerminationsCfg = TerminationsCfg()

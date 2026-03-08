@@ -100,10 +100,12 @@ import isaaclab_tasks  # noqa: F401
 from isaaclab_tasks.utils import get_checkpoint_path
 from isaaclab_tasks.utils.hydra import hydra_task_config
 
+# --- REQUIRED: register external project tasks BEFORE hydra_task_config decorator is evaluated ---
+import project_spiderbot  # noqa: F401 (registers external task ids, e.g., Template-Project-Spiderbot-v0)
+# -----------------------------------------------------------------------------------------------
+
 # import logger
 logger = logging.getLogger(__name__)
-
-import project_spiderbot.tasks  # noqa: F401
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True

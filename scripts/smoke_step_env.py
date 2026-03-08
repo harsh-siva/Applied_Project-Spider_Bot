@@ -3,6 +3,7 @@ import argparse
 import sys
 import traceback
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--task", required=True)
@@ -30,6 +31,17 @@ def main():
             env.reset()
             print(f"[smoke] action_space={env.action_space}", flush=True)
 
+            # --- DEBUG: print articulation joint names once ---
+            # Note: in ManagerBasedRLEnv, the robot is usually stored under env.unwrapped.scene["robot"].
+            robot = env.unwrapped.scene["robot"]
+
+            print("\n=== Spiderbot joint names (env articulation) ===", flush=True)
+            for i, name in enumerate(robot.data.joint_names):
+                print(f"{i:02d}: {name}", flush=True)
+            print("Joint count:", len(robot.data.joint_names), flush=True)
+            print("=============================================\n", flush=True)
+            # ------------------------------------------------
+
             for i in range(args.num_steps):
                 a_np = env.action_space.sample()
                 a = torch.tensor(a_np, device=args.device, dtype=torch.float32)
@@ -49,6 +61,7 @@ def main():
 
     finally:
         simulation_app.close()
+
 
 if __name__ == "__main__":
     main()
