@@ -89,9 +89,9 @@ class CommandsCfg:
         asset_name="robot",
         resampling_time_range=(1.0, 3.0),
         ranges=UniformVelocityCommandCfg.Ranges(
-            lin_vel_x=(-0.5, 0.5),
-            lin_vel_y=(-0.3, 0.3),
-            ang_vel_z=(-1.0, 1.0),
+            lin_vel_x=(-0.1, 0.1),
+            lin_vel_y=(0.0, 0.0),
+            ang_vel_z=(0.0, 0.0),
         ),
     )
 
@@ -137,7 +137,7 @@ class RewardsCfg:
     )
     track_ang_vel_z = RewTerm(
         func=mdp.track_ang_vel_z_exp,
-        weight=0.5,
+        weight=0.0,
         params={"command_name": "base_velocity", "std": 0.25},
     )
 
@@ -148,16 +148,23 @@ class RewardsCfg:
         params={"asset_cfg": SceneEntityCfg("robot", joint_names=SPIDERBOT_LEG_JOINTS)},
     )
 
+    upright = RewTerm(
+        func=mdp.upright_posture,
+        weight=0.5,
+    )
+
+    yaw_rate_l2 = RewTerm(
+        func=mdp.ang_vel_z_l2,
+        weight=-0.2,
+    )
+
 
 @configclass
 class TerminationsCfg:
     """Minimal termination set required by ManagerBasedRLEnvCfg validation."""
     time_out = DoneTerm(func=mdp.time_out, time_out=True)
 
-    bad_orientation = DoneTerm(
-        func=mdp.bad_orientation,
-        params={"limit_angle": 0.7},
-    )
+    bad_orientation = DoneTerm(func=mdp.bad_orientation_quat, params={"limit_angle": 1.3})
 
 
 @configclass
