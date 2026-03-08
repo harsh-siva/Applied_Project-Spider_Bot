@@ -12,6 +12,8 @@ from isaaclab.scene import InteractiveSceneCfg
 from isaaclab.utils import configclass
 from isaaclab.envs.mdp.actions import JointPositionActionCfg
 from isaaclab.envs.mdp.commands import UniformVelocityCommandCfg
+from isaaclab.managers import SceneEntityCfg
+from isaaclab.managers import RewardTermCfg as RewTerm
 
 from . import mdp
 
@@ -85,7 +87,7 @@ class ActionsCfg:
 class CommandsCfg:
     base_velocity = UniformVelocityCommandCfg(
         asset_name="robot",
-        resampling_time_range=(1000.0, 1000.0),  # effectively fixed during smoke
+        resampling_time_range=(1.0, 3.0),
         ranges=UniformVelocityCommandCfg.Ranges(
             lin_vel_x=(-0.5, 0.5),
             lin_vel_y=(-0.3, 0.3),
@@ -96,15 +98,30 @@ class CommandsCfg:
 
 @configclass
 class ObservationsCfg:
-    """Minimal observations. We'll add joint/base state next."""
+    """Minimal observations for velocity-tracking RL."""
 
     @configclass
     class PolicyCfg(ObsGroup):
-        # IMPORTANT: observation terms must be ObservationTermCfg, not raw functions
+        # 12-leg joint state
+        leg_joint_pos = ObsTerm(
+            func=mdp.joint_pos_rel,
+            params={"asset_cfg": SceneEntityCfg("robot", joint_names=SPIDERBOT_LEG_JOINTS)},
+        )
+        leg_joint_vel = ObsTerm(
+            func=mdp.joint_vel_rel,
+            params={"asset_cfg": SceneEntityCfg("robot", joint_names=SPIDERBOT_LEG_JOINTS)},
+        )
+
+        # base state (used later for tracking rewards)
+        base_lin_vel = ObsTerm(func=mdp.base_lin_vel)
+        base_ang_vel = ObsTerm(func=mdp.base_ang_vel)
+
+        # commanded velocity (the target we want to track)
         commanded_vel = ObsTerm(func=mdp.generated_commands, params={"command_name": "base_velocity"})
 
         def __post_init__(self) -> None:
             self.enable_corruption = False
+            # IMPORTANT: concatenate into one flat vector for RSL-RL
             self.concatenate_terms = True
 
     policy: PolicyCfg = PolicyCfg()
@@ -112,14 +129,35 @@ class ObservationsCfg:
 
 @configclass
 class RewardsCfg:
-    """Placeholder."""
-    pass
+    """Minimal rewards for cmd_vel tracking."""
+    track_lin_vel_xy = RewTerm(
+        func=mdp.track_lin_vel_xy_exp,
+        weight=1.0,
+        params={"command_name": "base_velocity", "std": 0.25},
+    )
+    track_ang_vel_z = RewTerm(
+        func=mdp.track_ang_vel_z_exp,
+        weight=0.5,
+        params={"command_name": "base_velocity", "std": 0.25},
+    )
+
+    action_rate_l2 = RewTerm(func=mdp.action_rate_l2, weight=-0.01)
+    joint_vel_l2 = RewTerm(
+        func=mdp.joint_vel_l2,
+        weight=-0.0005,
+        params={"asset_cfg": SceneEntityCfg("robot", joint_names=SPIDERBOT_LEG_JOINTS)},
+    )
 
 
 @configclass
 class TerminationsCfg:
     """Minimal termination set required by ManagerBasedRLEnvCfg validation."""
     time_out = DoneTerm(func=mdp.time_out, time_out=True)
+
+    bad_orientation = DoneTerm(
+        func=mdp.bad_orientation,
+        params={"limit_angle": 0.7},
+    )
 
 
 @configclass
