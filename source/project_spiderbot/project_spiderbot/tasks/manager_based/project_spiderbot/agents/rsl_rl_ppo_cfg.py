@@ -14,6 +14,7 @@ class PPORunnerCfg(RslRlOnPolicyRunnerCfg):
     max_iterations = 150
     save_interval = 50
     experiment_name = "spiderbot_cmdvel_track"
+    obs_groups = {"policy": ["policy"], "critic": ["policy"]}
     policy = RslRlPpoActorCriticCfg(
         init_noise_std=1.0,
         actor_obs_normalization=False,
