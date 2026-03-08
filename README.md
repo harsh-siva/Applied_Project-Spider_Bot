@@ -5,6 +5,13 @@
 This project/repository serves as a template for building projects or extensions based on Isaac Lab.
 It allows you to develop in an isolated environment, outside of the core Isaac Lab repository.
 
+Headless runs (recommended on this machine)
+-----------------------------------------
+Kit can hang or exit early if it can't access a stable X display. Use Xvfb:
+
+xvfb-run -a -s "-screen 0 1280x720x24" ./isaaclab.sh -p scripts/smoke_step_env.py \
+  --task Template-Project-Spiderbot-v0 --num_envs 1 --num_steps 50 --headless
+
 **Key Features:**
 
 - `Isolation` Work outside the core Isaac Lab repository, ensuring that your development efforts remain self-contained.
