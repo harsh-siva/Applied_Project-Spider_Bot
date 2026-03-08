@@ -65,8 +65,8 @@ class SpiderbotSceneCfg(InteractiveSceneCfg):
         actuators={
             "legs": ImplicitActuatorCfg(
                 joint_names_expr=SPIDERBOT_LEG_JOINTS,
-                stiffness=0.0,
-                damping=0.0,
+                stiffness=40.0,
+                damping=2.0,
             )
         },
     )
@@ -141,7 +141,7 @@ class RewardsCfg:
         params={"command_name": "base_velocity", "std": 0.25},
     )
 
-    action_rate_l2 = RewTerm(func=mdp.action_rate_l2, weight=-0.01)
+    action_rate_l2 = RewTerm(func=mdp.action_rate_l2, weight=-0.001)
     joint_vel_l2 = RewTerm(
         func=mdp.joint_vel_l2,
         weight=-0.0005,
