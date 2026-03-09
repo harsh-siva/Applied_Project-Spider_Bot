@@ -12,3 +12,5 @@ from .rewards import *  # noqa: F401, F403
 from .rewards import upright_posture
 
 from .terminations import bad_orientation_quat
+
+from . import spiderbot_curriculums

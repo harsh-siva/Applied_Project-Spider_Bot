@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
+
 import torch
 from isaaclab.utils import math as math_utils
 
@@ -13,11 +15,15 @@ def bad_orientation_quat(env: ManagerBasedRLEnv, limit_angle: float) -> torch.Te
     if quat_w.ndim == 1:
         quat_w = quat_w.unsqueeze(0)
 
-    z_axis_world = math_utils.quat_apply(
-        quat_w, torch.tensor([0.0, 0.0, 1.0], device=quat_w.device)
-    )
-    if z_axis_world.ndim == 1:
-        z_axis_world = z_axis_world.unsqueeze(0)
+    # Batched body-up axis (N, 3) to match quat_apply batching
+    up_b = torch.tensor(
+        [0.0, 0.0, 1.0],
+        device=quat_w.device,
+        dtype=quat_w.dtype,
+    ).expand(quat_w.shape[0], 3)
+
+    # Rotate body-up into world frame: (N, 3)
+    z_axis_world = math_utils.quat_apply(quat_w, up_b)
 
     # cos(theta) = dot(z_axis_world, world_up) = z component
     cos_theta = z_axis_world[:, 2].clamp(-1.0, 1.0)
